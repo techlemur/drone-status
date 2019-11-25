@@ -5,15 +5,17 @@
   "version": "0.1.0",
   "publisher": "oostrap",
   "license": "https://github.com/Pietjan/drone-status/blob/master/LICENSE",
-  "homepage": "",
+  "icon": "icon.png",
+  "homepage": "https://github.com/Pietjan/drone-status",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Pietjan/drone-status"
   },
   "categories": [
     "Other"
   ],
   "keywords": [
+    "Build Status",
     "Drone",
     "Drone CI",
     "CI"
@@ -42,10 +44,12 @@
           },
           "droneStatus.repo": {
             "type": "string",
+            "description": "(Optional) Repository name. Defaults to your workspace folder name.",
             "markdownDescription": "(Optional) Repository name. Defaults to your workspace folder name."
           },
           "droneStatus.owner": {
             "type": "string",
+            "description": "(Optional) Repository owner. Defaults to username from API result.",
             "markdownDescription": "(Optional) Repository owner. Defaults to username from API result."
           }
         }

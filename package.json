@@ -1,0 +1,76 @@
+{
+  "name": "drone-status",
+  "displayName": "Drone Status",
+  "description": "Drone Status is a VSCode extension to check Drone build status.",
+  "version": "0.1.0",
+  "publisher": "oostrap",
+  "license": "https://github.com/Pietjan/drone-status/blob/master/LICENSE",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Drone",
+    "Drone CI",
+    "CI"
+  ],
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "activationEvents": [
+    "workspaceContains:**/.drone.yml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Drone Status configuration",
+        "properties": {
+          "droneStatus.server": {
+            "type": "string",
+            "description": "Drone Server. Defaults to DRONE_SERVER environment variable",
+            "markdownDescription": "Drone Server. Defaults to `DRONE_SERVER` environment variable"
+          },
+          "droneStatus.token": {
+            "type": "string",
+            "description": "Drone token. Defaults to DRONE_TOKEN environment variable",
+            "markdownDescription": "Drone token. Defaults to `DRONE_TOKEN` environment variable"
+          },
+          "droneStatus.repo": {
+            "type": "string",
+            "markdownDescription": "(Optional) Repository name. Defaults to your workspace folder name."
+          },
+          "droneStatus.owner": {
+            "type": "string",
+            "markdownDescription": "(Optional) Repository owner. Defaults to username from API result."
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.38.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}

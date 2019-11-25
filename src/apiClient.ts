@@ -78,13 +78,13 @@ export class ApiClient {
 
   public async retryBuild(buildNumber: number) {
     const path = `/repos/${this.owner}/${this.repo}/builds/${buildNumber}`;
+    const response = await this.requestApiWithPost(path);
+    const newBuildNumber = response.data.number ? response.data.number : buildNumber;
 
-    await this.requestApiWithPost(path);
     vscode.window
       .showInformationMessage(`Restarted build #${buildNumber}`, 'Go to Build')
       .then(() => {
-        buildNumber = buildNumber++;
-        vscode.env.openExternal(vscode.Uri.parse(this.getBuildUrl(buildNumber)));
+        vscode.env.openExternal(vscode.Uri.parse(this.getBuildUrl(newBuildNumber)));
       });
   }
 

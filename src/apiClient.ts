@@ -76,16 +76,15 @@ export class ApiClient {
     }
   }
 
-  public async retryBuild(buildNumber: number) {
-    const path = `/repos/${this.owner}/${this.repo}/builds/${buildNumber}`;
-    const response = await this.requestApiWithPost(path);
-    const newBuildNumber = response.data.number ? response.data.number : buildNumber;
-
-    vscode.window
-      .showInformationMessage(`Restarted build #${buildNumber}`, 'Go to Build')
-      .then(() => {
-        vscode.env.openExternal(vscode.Uri.parse(this.getBuildUrl(newBuildNumber)));
-      });
+  public async retryBuild(buildNumber: number): Promise<number> {
+    try {
+      const path = `/repos/${this.owner}/${this.repo}/builds/${buildNumber}`;
+      const response = await this.requestApiWithPost(path);
+      return response.data.number ? response.data.number : 0;
+    } catch (err) {
+      vscode.window.showErrorMessage(`Failed to Restart build`);
+      throw new Error(err);
+    }
   }
 
   private async requestApiWithGet(path: string): Promise<any> {

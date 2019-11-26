@@ -43,7 +43,12 @@ export class QuickPick {
     }
     switch (selectedItem.label) {
       case QuickPick.LATEST_RETRY_ITEM_LABEL:
-        await this.apiClient.retryBuild(this.recentBuilds[0].number);
+        const buildNumber = await this.apiClient.retryBuild(this.recentBuilds[0].number);
+        vscode.window
+        .showInformationMessage(`Restarted build #${this.recentBuilds[0].number}`, 'Go to Build')
+        .then(() => {
+          vscode.env.openExternal(vscode.Uri.parse(this.apiClient.getBuildUrl(buildNumber)));
+        });
         statusBar.updateBuildStatus();
         break;
       case QuickPick.LATEST_BUILD_URL_ITEM_LABEL:

@@ -60,7 +60,7 @@ export class StatusBar {
           text += '$(gear~spin)';
           this.updateBuildStatusDelayed();
           break;
-        case 'failed':
+        case 'failure':
           text += '$(x)';
           break;
         case 'success':
@@ -68,6 +68,9 @@ export class StatusBar {
           break;
         case 'killed':
           text += '$(circle-slash)';
+          break;
+        case 'error':
+          text += '$(alert)';
           break;
         default:
           text += recentBuild.status;

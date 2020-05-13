@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { ApiClient } from './ApiClient';
+import { ApiClient } from './apiClient';
 import { QuickPick } from './QuickPick';
 import { StatusBar } from './StatusBar';
 
@@ -57,6 +57,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
 
     if (token === '' || server === '') {
+      vscode.window.showErrorMessage(`Drone server and/or token configuration missing`);
       return;
     }
 

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as Types from './types';
-import { ApiClient } from './ApiClient';
+import { ApiClient } from './apiClient';
 import { StatusBar } from './StatusBar';
 
 export class QuickPick {
@@ -37,7 +37,12 @@ export class QuickPick {
       return;
     }
 
-    const selectedItem = await vscode.window.showQuickPick([this.latestRetryItem, this.latestBuildUrlItem, this.showBuildListItem]);
+    const selectedItem = await vscode.window.showQuickPick(
+      [
+        this.latestRetryItem,
+        this.latestBuildUrlItem, 
+        this.showBuildListItem
+      ]);
     if (!selectedItem) {
       return;
     }

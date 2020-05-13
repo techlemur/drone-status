@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { ApiClient } from './apiClient';
-import { QuickPick } from './QuickPick';
-import { StatusBar } from './StatusBar';
+import { QuickPick } from './quickPick';
+import { StatusBar } from './statusBar';
 
 export async function activate(context: vscode.ExtensionContext) {
   let apiClient: ApiClient;

@@ -25,7 +25,7 @@ export class ApiClient {
       if (this.owner === '') {
         this.owner = response.data.login;
       }
-    } catch (err) {
+    } catch (err: any) {
       vscode.window.showErrorMessage(`Failed to connect to (${this.server})`);
       throw new Error(err);
     }
@@ -70,7 +70,7 @@ export class ApiClient {
         });
       });
       return recentBuilds;
-    } catch (err) {
+    } catch (err: any) {
       vscode.window.showErrorMessage(`Failed to get builds for (${this.owner}/${this.repo})`);
       throw new Error(err);
     }
@@ -81,7 +81,7 @@ export class ApiClient {
       const path = `/repos/${this.owner}/${this.repo}/builds/${buildNumber}`;
       const response = await this.requestApiWithPost(path);
       return response.data.number ? response.data.number : 0;
-    } catch (err) {
+    } catch (err: any) {
       vscode.window.showErrorMessage(`Failed to Restart build`);
       throw new Error(err);
     }
@@ -91,7 +91,7 @@ export class ApiClient {
     try {
       const response = await this.instance.get(path);
       return response;
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(err);
     }
   }
@@ -100,7 +100,7 @@ export class ApiClient {
     try {
       const response = await this.instance.post(path);
       return response;
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(err);
     }
   }

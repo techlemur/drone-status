@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as Types from './types';
 import { ApiClient } from './apiClient';
-import { StatusBar } from './StatusBar';
+import { StatusBar } from './statusBar';
 
 export class QuickPick {
   static readonly LATEST_RETRY_ITEM_LABEL: string = 'Drone Status: Retry latest build';

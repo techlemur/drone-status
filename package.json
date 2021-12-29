@@ -25,7 +25,8 @@
   },
   "activationEvents": [
     "workspaceContains:**/.drone.yml",
-    "workspaceContains:**/.drone.yaml"
+    "workspaceContains:**/.drone.yaml",
+    "workspaceContains:**/.drone.jsonnet"
   ],
   "main": "./out/extension.js",
   "contributes": {
